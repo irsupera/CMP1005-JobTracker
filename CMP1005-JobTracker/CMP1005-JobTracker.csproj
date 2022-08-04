@@ -5,4 +5,14 @@
     <RootNamespace>CMP1005_JobTracker</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Views\JobTracker\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Sqlite.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\JobTracker\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="5.0.17" />
+  </ItemGroup>
 </Project>
