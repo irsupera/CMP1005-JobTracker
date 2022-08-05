@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMP1005-JobTracker", "CMP10
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMP1005-JobTracker-API", "CMP1005-JobTracker-API\CMP1005-JobTracker-API.csproj", "{75EB8044-B3A4-4CE4-8D99-08725F0F1647}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMP1005-JobTracker-Test", "CMP1005-JobTracker-Test\CMP1005-JobTracker-Test.csproj", "{598823A0-8F02-46E8-8954-73C00DEBCFBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{75EB8044-B3A4-4CE4-8D99-08725F0F1647}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75EB8044-B3A4-4CE4-8D99-08725F0F1647}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75EB8044-B3A4-4CE4-8D99-08725F0F1647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{598823A0-8F02-46E8-8954-73C00DEBCFBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{598823A0-8F02-46E8-8954-73C00DEBCFBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{598823A0-8F02-46E8-8954-73C00DEBCFBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{598823A0-8F02-46E8-8954-73C00DEBCFBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
