@@ -20,9 +20,6 @@ namespace CMP1005_JobTracker.Models
         [ForeignKey("JobId")]
         public virtual Job Jobs { get; set; }
 
-        public DTR()
-        {
-        }
     }
 }
 

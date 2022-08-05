@@ -24,4 +24,13 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.17" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Views\Jobs\Shared">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+  </ItemGroup>
 </Project>

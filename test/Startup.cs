@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,9 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
 
-namespace CMP1005_JobTracker
+namespace test
 {
     public class Startup
     {
@@ -25,9 +24,6 @@ namespace CMP1005_JobTracker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-            services.AddDbContext<JobTrackerContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("JobTrackerContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,9 +50,8 @@ namespace CMP1005_JobTracker
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    //pattern: "{controller=Home}/{action=Index}/{id?}");
-                    pattern: "{controller=JobTracker}/{action=Index}/{id?}");
-        });
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }

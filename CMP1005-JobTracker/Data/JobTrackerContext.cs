@@ -7,7 +7,9 @@ using CMP1005_JobTracker.Models;
 
     public class JobTrackerContext : DbContext
     {
-        public JobTrackerContext (DbContextOptions<JobTrackerContext> options)
+    public readonly object Jobs;
+
+    public JobTrackerContext (DbContextOptions<JobTrackerContext> options)
             : base(options)
         {
         }

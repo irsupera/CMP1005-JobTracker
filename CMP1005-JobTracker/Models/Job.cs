@@ -14,9 +14,6 @@ namespace CMP1005_JobTracker.Models
         public string Detail { get; set; }
         public string Status { get; set; }
 
-        public Job()
-        {
-        }
     }
 }
 
