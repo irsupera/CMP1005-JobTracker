@@ -55,7 +55,7 @@ namespace CMP1005_JobTracker
                 endpoints.MapControllerRoute(
                     name: "default",
                     //pattern: "{controller=Home}/{action=Index}/{id?}");
-                    pattern: "{controller=JobTracker}/{action=Index}/{id?}");
+                    pattern: "{controller=Job}/{action=Index}/{id?}");
         });
         }
     }

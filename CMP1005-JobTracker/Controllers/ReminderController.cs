@@ -9,22 +9,23 @@ using CMP1005_JobTracker.Models;
 
 namespace CMP1005_JobTracker.Controllers
 {
-    public class JobTrackerController : Controller
+    public class ReminderController : Controller
     {
         private readonly JobTrackerContext _context;
 
-        public JobTrackerController(JobTrackerContext context)
+        public ReminderController(JobTrackerContext context)
         {
             _context = context;
         }
 
-        // GET: JobTracker
+        // GET: Reminder
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Job.ToListAsync());
+            var jobTrackerContext = _context.Reminder.Include(r => r.Jobs);
+            return View(await jobTrackerContext.ToListAsync());
         }
 
-        // GET: JobTracker/Details/5
+        // GET: Reminder/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +33,42 @@ namespace CMP1005_JobTracker.Controllers
                 return NotFound();
             }
 
-            var job = await _context.Job
-                .FirstOrDefaultAsync(m => m.JobId == id);
-            if (job == null)
+            var reminder = await _context.Reminder
+                .Include(r => r.Jobs)
+                .FirstOrDefaultAsync(m => m.RemId == id);
+            if (reminder == null)
             {
                 return NotFound();
             }
 
-            return View(job);
+            return View(reminder);
         }
 
-        // GET: JobTracker/Create
+        // GET: Reminder/Create
         public IActionResult Create()
         {
+            ViewData["JobId"] = new SelectList(_context.Job, "JobId", "Company");
             return View();
         }
 
-        // POST: JobTracker/Create
+        // POST: Reminder/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("JobId,Position,Company,Detail,Status")] Job job)
+        public async Task<IActionResult> Create([Bind("RemId,Detail,DateTime,JobId")] Reminder reminder)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(job);
+                _context.Add(reminder);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(job);
+            ViewData["JobId"] = new SelectList(_context.Job, "JobId", "Company", reminder.JobId);
+            return View(reminder);
         }
 
-        // GET: JobTracker/Edit/5
+        // GET: Reminder/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +76,23 @@ namespace CMP1005_JobTracker.Controllers
                 return NotFound();
             }
 
-            var job = await _context.Job.FindAsync(id);
-            if (job == null)
+            var reminder = await _context.Reminder.FindAsync(id);
+            if (reminder == null)
             {
                 return NotFound();
             }
-            return View(job);
+            ViewData["JobId"] = new SelectList(_context.Job, "JobId", "Company", reminder.JobId);
+            return View(reminder);
         }
 
-        // POST: JobTracker/Edit/5
+        // POST: Reminder/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("JobId,Position,Company,Detail,Status")] Job job)
+        public async Task<IActionResult> Edit(int id, [Bind("RemId,Detail,DateTime,JobId")] Reminder reminder)
         {
-            if (id != job.JobId)
+            if (id != reminder.RemId)
             {
                 return NotFound();
             }
@@ -96,12 +101,12 @@ namespace CMP1005_JobTracker.Controllers
             {
                 try
                 {
-                    _context.Update(job);
+                    _context.Update(reminder);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!JobExists(job.JobId))
+                    if (!ReminderExists(reminder.RemId))
                     {
                         return NotFound();
                     }
@@ -112,10 +117,11 @@ namespace CMP1005_JobTracker.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(job);
+            ViewData["JobId"] = new SelectList(_context.Job, "JobId", "Company", reminder.JobId);
+            return View(reminder);
         }
 
-        // GET: JobTracker/Delete/5
+        // GET: Reminder/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +129,31 @@ namespace CMP1005_JobTracker.Controllers
                 return NotFound();
             }
 
-            var job = await _context.Job
-                .FirstOrDefaultAsync(m => m.JobId == id);
-            if (job == null)
+            var reminder = await _context.Reminder
+                .Include(r => r.Jobs)
+                .FirstOrDefaultAsync(m => m.RemId == id);
+            if (reminder == null)
             {
                 return NotFound();
             }
 
-            return View(job);
+            return View(reminder);
         }
 
-        // POST: JobTracker/Delete/5
+        // POST: Reminder/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var job = await _context.Job.FindAsync(id);
-            _context.Job.Remove(job);
+            var reminder = await _context.Reminder.FindAsync(id);
+            _context.Reminder.Remove(reminder);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool JobExists(int id)
+        private bool ReminderExists(int id)
         {
-            return _context.Job.Any(e => e.JobId == id);
+            return _context.Reminder.Any(e => e.RemId == id);
         }
     }
 }
