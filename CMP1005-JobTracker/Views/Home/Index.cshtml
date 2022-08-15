@@ -1,9 +1,55 @@
-﻿@{
+﻿@model IEnumerable<CMP1005_JobTracker.Models.Reminder>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome :)</h1>
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
 </div>
 
+<table class="table" align="center">
+    <thead>
+        <tr>
+            <th>
+                Links
+            </th>
+            <th>
+                Reminder
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p>
+                    <a asp-controller="Job" asp-action="Index">Manage Job Applications</a>
+                </p>
+                <p>
+                    <a asp-controller="DTR" asp-action="Index">Manage Daily Time Records</a>
+                </p>
+                <p>
+                    <a asp-controller="Reminder" asp-action="Index">Manage Reminders</a>
+                </p>
+            </td>
+            <td>
+                @*<table class="table" align="center">
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Detail)
+                                    <br />
+                                    @Html.DisplayFor(modelItem => item.Jobs.Company)
+                                    <br />
+                                    @Html.DisplayFor(modelItem => item.DateTime)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>*@
+            </td>
+        </tr>
+<tbody>
+</table>
