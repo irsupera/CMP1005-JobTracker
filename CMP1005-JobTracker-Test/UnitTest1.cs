@@ -14,7 +14,7 @@ namespace CMP1005_JobTracker_Test
         //private readonly JobTrackerContext _context;
 
         [TestMethod]
-        public void TestIndex()
+        public void TestJobIndex()
         {
             JobController controller = new JobController();
             ViewResult result = controller.Index() as ViewResult;
@@ -22,9 +22,41 @@ namespace CMP1005_JobTracker_Test
         }
 
         [TestMethod]
-        public void TestDetails()
+        public void TestJobDetails()
         {
             JobController controller = new JobController();
+            ViewResult result = controller.Details(2) as ViewResult;
+            Assert.AreEqual("Details", result.ViewName);
+        }
+
+        [TestMethod]
+        public void TestDTRIndex()
+        {
+            DTRController controller = new DTRController();
+            ViewResult result = controller.Index() as ViewResult;
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestDTRDetails()
+        {
+            DTRController controller = new DTRController();
+            ViewResult result = controller.Details(2) as ViewResult;
+            Assert.AreEqual("Details", result.ViewName);
+        }
+
+        [TestMethod]
+        public void TestReminderIndex()
+        {
+            ReminderController controller = new ReminderController();
+            ViewResult result = controller.Index() as ViewResult;
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestReminderDetails()
+        {
+            ReminderController controller = new ReminderController();
             ViewResult result = controller.Details(2) as ViewResult;
             Assert.AreEqual("Details", result.ViewName);
         }
