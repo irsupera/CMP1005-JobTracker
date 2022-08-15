@@ -9,33 +9,50 @@
 </div>
 
 <table class="table" align="center">
-    <thead>
-        <tr>
-            <th>
-                Links
-            </th>
-            <th>
-                Reminder
-            </th>
-        </tr>
-    </thead>
     <tbody>
         <tr>
             <td>
-                <p>
-                    <a asp-controller="Job" asp-action="Index">Manage Job Applications</a>
-                </p>
-                <p>
-                    <a asp-controller="DTR" asp-action="Index">Manage Daily Time Records</a>
-                </p>
-                <p>
-                    <a asp-controller="Reminder" asp-action="Index">Manage Reminders</a>
-                </p>
+                <table class="table" align="center">
+                    <thead>
+                        <tr>
+                            <th>
+                                Links
+                            </th>
+                        <tr />
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>
+                                    <a asp-controller="Job" asp-action="Index">Manage Jobs</a>
+                                </p>
+                                <p>
+                                    <a asp-controller="DTR" asp-action="Index">Manage Daily Time Records</a>
+                                </p>
+                                <p>
+                                    <a asp-controller="Reminder" asp-action="Index">Manage Reminders</a>
+                                </p>
+                            </td>
+                        <tr />
+                    <tbody>
+                </table>
             </td>
             <td>
-                @*<table class="table" align="center">
+                <table class="table" align="center">
+                    <thead>
+                        <tr>
+                            <th>
+                                Reminders
+                            </th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        <tr>
+                            <td>
+                                <i>reminders here!!!</i>
+                            </td>
+                        </tr>
+                        @*@foreach (var item in Model)
                         {
                             <tr>
                                 <td>
@@ -46,10 +63,10 @@
                                     @Html.DisplayFor(modelItem => item.DateTime)
                                 </td>
                             </tr>
-                        }
+                        }*@
                     </tbody>
-                </table>*@
+                </table>
             </td>
-        </tr>
-<tbody>
+         </tr>
+    <tbody>
 </table>

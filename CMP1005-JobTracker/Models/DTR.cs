@@ -11,6 +11,7 @@ namespace CMP1005_JobTracker.Models
 
         [DataType(DataType.DateTime)]
         public string TimeIn { get; set; }
+
         [DataType(DataType.DateTime)]
         public string TimeOut { get; set; }
 

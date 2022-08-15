@@ -9,6 +9,8 @@ namespace CMP1005_JobTracker.Models
         [Key]
         public int RemId { get; set; }
 
+        [Required(ErrorMessage = "Please enter reminder detail")]
+        [StringLength(500)]
         public string Detail { get; set; }
 
         [DataType(DataType.DateTime)]
