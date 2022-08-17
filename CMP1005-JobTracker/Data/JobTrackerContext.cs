@@ -7,12 +7,16 @@ using CMP1005_JobTracker.Models;
 
     public class JobTrackerContext : DbContext
     {
-    public readonly object Jobs;
+    //public readonly object Jobs;
 
     public JobTrackerContext (DbContextOptions<JobTrackerContext> options)
             : base(options)
         {
         }
 
-        public DbSet<CMP1005_JobTracker.Models.Job> Job { get; set; }
-    }
+        public DbSet<Job> Job { get; set; }
+
+        public DbSet<DTR> DTR { get; set; }
+
+        public DbSet<Reminder> Reminder { get; set; }
+}

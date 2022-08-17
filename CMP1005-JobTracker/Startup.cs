@@ -27,7 +27,8 @@ namespace CMP1005_JobTracker
             services.AddControllersWithViews();
 
             services.AddDbContext<JobTrackerContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("JobTrackerContext")));
+                //options.UseSqlite(Configuration.GetConnectionString("JobTrackerContext")));
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
