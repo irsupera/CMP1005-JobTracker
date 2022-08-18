@@ -61,8 +61,9 @@ namespace CMP1005_JobTracker_API.Controllers
         [HttpDelete("{id}")]
         public StatusCodeResult Delete(int id)
         {
-            //_db.Job.Remove(new Job {JobId == id});
-            //_db.SaveChanges();
+            var job = _db.Job.Where(p => p.JobId == id).FirstOrDefault();
+            _db.Job.Remove(job);
+            _db.SaveChanges();
             return Ok();
 
         }

@@ -61,8 +61,9 @@ namespace CMP1005_JobTracker_API.Controllers
         [HttpDelete("{id}")]
         public StatusCodeResult Delete(int id)
         {
-            //_db.Reminder.Remove(new Reminder {RemId == id});
-            //_db.SaveChanges();
+            var reminder = _db.Reminder.Where(p => p.RemId == id).FirstOrDefault();
+            _db.Reminder.Remove(reminder);
+            _db.SaveChanges();
             return Ok();
         }
     }
