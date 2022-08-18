@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<CMP1005_JobTracker.Models.Reminder>
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -47,26 +48,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <i>reminders here!!!</i>
-                            </td>
-                        </tr>
-                        @*@foreach (var item in Model)
+                        @foreach (var item in Model)
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Detail)
-                                    <br />
-                                    @Html.DisplayFor(modelItem => item.Jobs.Company)
-                                    <br />
-                                    @Html.DisplayFor(modelItem => item.DateTime)
+                                    <i>
+                                        @if (Convert.ToDateTime(item.DateTime) < DateTime.Today)
+                                            continue;
+                                            @Html.DisplayFor(modelItem => item.Detail)
+                                            <br />
+                                            Due:
+                                            @Convert.ToDateTime(item.DateTime)
+                                    </i>
                                 </td>
                             </tr>
-                        }*@
+                        }
                     </tbody>
                 </table>
             </td>
-         </tr>
+        </tr>
     <tbody>
 </table>

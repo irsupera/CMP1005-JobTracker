@@ -6,22 +6,37 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CMP1005_JobTracker.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CMP1005_JobTracker.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly JobTrackerContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(JobTrackerContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        // GET: Reminder
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var jobTrackerContext = _context.Reminder.Include(r => r.Jobs);
+            return View(await jobTrackerContext.ToListAsync());
         }
+
+        //private readonly ILogger<HomeController> _logger;
+
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
         public IActionResult Privacy()
         {
