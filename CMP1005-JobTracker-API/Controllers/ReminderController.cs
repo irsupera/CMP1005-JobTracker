@@ -10,62 +10,60 @@ using Microsoft.AspNetCore.Mvc;
 namespace CMP1005_JobTracker_API.Controllers
 {
     [Route("api/[controller]")]
-    public class JobController : Controller
+    public class ReminderController : Controller
     {
         private readonly JobTrackerContext _db;
 
-        public JobController(JobTrackerContext context)
+        public ReminderController(JobTrackerContext context)
         {
             _db = context;
         }
 
-        // GET: api/Job
+        // GET: api/Reminder
         [HttpGet]
-        public IEnumerable<Job> Get()
+        public IEnumerable<Reminder> Get()
         {
-            return _db.Job.ToList();
+            return _db.Reminder.ToList();
             //return new string[] { "value1", "value2" };
         }
 
-        // GET api/Job/5
+        // GET api/Reminder/5
         [HttpGet("{id}")]
-        public Job Get(int id)
+        public Reminder Get(int id)
         {
-            return _db.Job.Where(p => p.JobId == id).FirstOrDefault();
+            return _db.Reminder.Where(p => p.RemId == id).FirstOrDefault();
             //return "value";
         }
 
-        // POST api/Job
+        // POST api/Reminder
         [HttpPost]
-        public StatusCodeResult Post([FromBody] Job value)
+        public StatusCodeResult Post([FromBody] Reminder value)
         {
-            _db.Job.Add(value);
+            _db.Reminder.Add(value);
             _db.SaveChanges();
             return Ok();
         }
 
-        // PUT api/Job/5
+        // PUT api/Reminder/5
         [HttpPut("{id}")]
-        public StatusCodeResult Put(int id, [FromBody] Job value)
+        public StatusCodeResult Put(int id, [FromBody] Reminder value)
         {
-            if (value.JobId == id)
+            if (value.RemId == id)
             {
-                _db.Job.Update(value);
+                _db.Reminder.Update(value);
                 _db.SaveChanges();
                 return Ok();
             }
             return new StatusCodeResult(400);
         }
 
-        // DELETE api/Job/5
+        // DELETE api/Reminder/5
         [HttpDelete("{id}")]
         public StatusCodeResult Delete(int id)
         {
-            //_db.Job.Remove(new Job {JobId == id});
+            //_db.Reminder.Remove(new Reminder {RemId == id});
             //_db.SaveChanges();
             return Ok();
-
         }
     }
 }
-

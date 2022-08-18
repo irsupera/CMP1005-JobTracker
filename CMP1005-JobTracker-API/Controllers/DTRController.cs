@@ -10,62 +10,60 @@ using Microsoft.AspNetCore.Mvc;
 namespace CMP1005_JobTracker_API.Controllers
 {
     [Route("api/[controller]")]
-    public class JobController : Controller
+    public class DTRController : Controller
     {
         private readonly JobTrackerContext _db;
 
-        public JobController(JobTrackerContext context)
+        public DTRController(JobTrackerContext context)
         {
             _db = context;
         }
 
-        // GET: api/Job
+        // GET: api/DTR
         [HttpGet]
-        public IEnumerable<Job> Get()
+        public IEnumerable<DTR> Get()
         {
-            return _db.Job.ToList();
+            return _db.DTR.ToList();
             //return new string[] { "value1", "value2" };
         }
 
-        // GET api/Job/5
+        // GET api/DTR/5
         [HttpGet("{id}")]
-        public Job Get(int id)
+        public DTR Get(int id)
         {
-            return _db.Job.Where(p => p.JobId == id).FirstOrDefault();
+            return _db.DTR.Where(p => p.DTRId == id).FirstOrDefault();
             //return "value";
         }
 
-        // POST api/Job
+        // POST api/DTR
         [HttpPost]
-        public StatusCodeResult Post([FromBody] Job value)
+        public StatusCodeResult Post([FromBody] DTR value)
         {
-            _db.Job.Add(value);
+            _db.DTR.Add(value);
             _db.SaveChanges();
             return Ok();
         }
 
-        // PUT api/Job/5
+        // PUT api/DTR/5
         [HttpPut("{id}")]
-        public StatusCodeResult Put(int id, [FromBody] Job value)
+        public StatusCodeResult Put(int id, [FromBody] DTR value)
         {
-            if (value.JobId == id)
+            if (value.DTRId == id)
             {
-                _db.Job.Update(value);
+                _db.DTR.Update(value);
                 _db.SaveChanges();
                 return Ok();
             }
             return new StatusCodeResult(400);
         }
 
-        // DELETE api/Job/5
+        // DELETE api/DTR/5
         [HttpDelete("{id}")]
         public StatusCodeResult Delete(int id)
         {
-            //_db.Job.Remove(new Job {JobId == id});
+            //_db.DTR.Remove(new Job {DTRId == id});
             //_db.SaveChanges();
             return Ok();
-
         }
     }
 }
-

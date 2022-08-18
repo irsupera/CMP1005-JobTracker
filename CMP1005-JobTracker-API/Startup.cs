@@ -28,7 +28,8 @@ namespace CMP1005_JobTracker_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<JobTrackerContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("JobTrackerContext")));
+                    //options.UseSqlite(Configuration.GetConnectionString("JobTrackerContext")));
+                    options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
