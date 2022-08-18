@@ -3,12 +3,31 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@{
+    double wk0Hrs = 0;
+    double wk1Hrs = 0;
+    DateTime tdt = DateTime.Today;
+    int diff = (7 + (tdt.DayOfWeek - DayOfWeek.Monday)) % 7;
+    DateTime sdt = tdt.AddDays(-1 * diff).Date;
+    DateTime edt = sdt.AddDays(+7).Date;
+    DateTime pdt = sdt.AddDays(-7).Date;
+    foreach (var item in Model) {
+        var toHrs = Convert.ToDateTime(item.TimeOut) - Convert.ToDateTime(item.TimeIn);
+        if (Convert.ToDateTime(item.TimeOut) >= sdt && Convert.ToDateTime(item.TimeOut) <= edt)
+            wk1Hrs = wk1Hrs + toHrs.TotalHours;
+        if (Convert.ToDateTime(item.TimeOut) >= pdt && Convert.ToDateTime(item.TimeOut) <= sdt)
+            wk0Hrs = wk0Hrs + toHrs.TotalHours;
+    }
+}
 <h1>Manage Daily Time Records</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<h6 style="text-align:right">
+    Last Week: @wk0Hrs hr |
+    This Week: @wk1Hrs hr
+</h6>
 <table class="table">
     <thead>
         <tr>
@@ -28,10 +47,12 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TimeIn)
+                @*@Html.DisplayFor(modelItem => item.TimeIn)*@
+                @Convert.ToDateTime(item.TimeIn)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TimeOut)
+                @*@Html.DisplayFor(modelItem => item.TimeOut)*@
+                @Convert.ToDateTime(item.TimeOut)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Jobs.Company)
