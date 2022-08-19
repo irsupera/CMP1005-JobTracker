@@ -33,7 +33,9 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="RemId" />
-        <input type="submit" value="Delete" class="btn btn-danger" id="Delete" /> |
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-danger" id="Delete" />
+        </div>
         <a asp-action="Index">Back to List</a>
     </form>
 </div>

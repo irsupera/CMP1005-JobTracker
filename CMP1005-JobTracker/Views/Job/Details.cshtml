@@ -37,6 +37,8 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.JobId">Edit</a> |
+    <div class="form-group">
+        <a asp-action="Edit" asp-route-id="@Model.JobId" class="btn btn-primary">Edit</a>
+    </div>
     <a asp-action="Index">Back to List</a>
 </div>
