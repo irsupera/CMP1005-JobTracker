@@ -1,7 +1,7 @@
 @model CMP1005_JobTracker.Models.DTR
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit DTR";
 }
 
 <h1>Edit</h1>
@@ -15,12 +15,12 @@
             <input type="hidden" asp-for="DTRId" />
             <div class="form-group">
                 <label asp-for="TimeIn" class="control-label"></label>
-                <input asp-for="TimeIn" class="form-control" />
+                <input asp-for="TimeIn" class="form-control" id="TimeIn" />
                 <span asp-validation-for="TimeIn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TimeOut" class="control-label"></label>
-                <input asp-for="TimeOut" class="form-control" />
+                <input asp-for="TimeOut" class="form-control" id="TimeOut" />
                 <span asp-validation-for="TimeOut" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -29,7 +29,7 @@
                 <span asp-validation-for="JobId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" id="Save" />
             </div>
         </form>
     </div>

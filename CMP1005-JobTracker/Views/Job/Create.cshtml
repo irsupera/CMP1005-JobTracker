@@ -1,7 +1,7 @@
 @model CMP1005_JobTracker.Models.Job
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Job";
 }
 
 <h1>Create</h1>
@@ -19,21 +19,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="Company" class="control-label"></label>
-                <input asp-for="Company" class="form-control" />
+                <input asp-for="Company" class="form-control" id="Company" />
                 <span asp-validation-for="Company" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Detail" class="control-label"></label>
-                <input asp-for="Detail" class="form-control" />
+                <input asp-for="Detail" class="form-control" id="Detail" />
                 <span asp-validation-for="Detail" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
+                <input asp-for="Status" class="form-control" id="Status" />
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" id="Create" />
             </div>
         </form>
     </div>
